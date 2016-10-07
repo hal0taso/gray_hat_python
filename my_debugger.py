@@ -24,7 +24,7 @@ class debugger():
         kernel32.GetSystemInfo(byref(system_info))
         self.page_size = system_info.dwPageSize
 
-        self.guard_pages = []
+        self.guarded_pages = []
         self.memory_breakpoints = {}
 
     def load(self, path_to_exe):
@@ -439,6 +439,6 @@ class debugger():
             current_page += self.page_size
 
         # add memory breakpoint to global dictionary
-        self.memory_breakpoints[address] (size, mbi)
+        self.memory_breakpoints[address] = (size, mbi)
 
         return True
